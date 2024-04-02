@@ -68,3 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<!-- headers are additional information sent along with the HTTP request. Headers provide metadata about the request or the data being sent. -->
+<!-- 'Api-auth-key': 'your-api-key' is a custom header that might be used for authentication purposes. It appears to be expecting an API key ('your-api-key'), which should be provided by the API provider. This header serves to authenticate the client making the request.
+'Content-Type': 'application/json' specifies that the content being sent in the request body is in JSON format. This header is essential when sending JSON data to the server so that the server knows how to parse the incoming data. -->

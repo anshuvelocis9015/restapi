@@ -1,12 +1,23 @@
-import './App.css';
+import React, { useState } from 'react';
 import LoginForm from './components/LoginForm/LoginForm';
+import Home from './components/Home/Home';
 
-function App() {
+const App = () => {
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+
+  const handleLoginFormSubmit = (email, password) => {
+    setUserEmail(email);
+    setUserPassword(password);
+  };
+
   return (
     <div>
-     <LoginForm />
+      <LoginForm onSubmit={handleLoginFormSubmit} />
+      <Home userEmail={userEmail} userPassword={userPassword} />
     </div>
   );
-}
+};
 
 export default App;
+

@@ -23,6 +23,15 @@
   inherits: true;
 }
 
+:root {
+	--d: 2500ms;
+	--angle: 90deg;
+	--gradX: 100%;
+	--gradY: 50%;
+	--c1: green;
+	--c2: lightgreen;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -34,9 +43,39 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url('./components/Assets/background.jpg') no-repeat;
+  background-image: url('https://source.unsplash.com/1600x900/?nature');
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+@keyframes borderRotate {
+	100% {
+		--angle: 420deg;
+	}
+}
+
+@keyframes borderRadial {
+	20% {
+		--gradX: 100%;
+		--gradY: 50%;
+	}
+	40% {
+		--gradX: 100%;
+		--gradY: 100%;
+	}
+	60% {
+		--gradX: 50%;
+		--gradY: 100%;
+	}
+	80% {
+		--gradX: 0%;
+		--gradY: 50%;
+	}
+	100% {
+		--gradX: 50%;
+		--gradY: 0%;
+	}
 }
 
 code {
