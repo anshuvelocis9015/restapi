@@ -1,6 +1,32 @@
+// import React from "react";
+// import { useLocation } from "react-router-dom";
 
+// const UserProfile = () => {
+//   const location = useLocation();
+//   const id = location?.state?.userData?.id;
+//   const user_id = location?.state?.userData?.user_id;
+//   const user_name = location?.state?.userData?.user_name;
+//   const email =location?.state?.userData?.email_id;
+//   const first_name = location?.state?.userData?.first_name;
+//   const last_name = location?.state?.userData?.last_name;
+//   const designation = location?.state?.userData?.designation;
+//     return (
+//         <div className="container mt-5">
+//             <h1>User Profile</h1>{console.log("name",location?.state?.userData?.email_id)}
+//             <p>ID: {id}</p>
+//             <p>USER_ID:{user_id}</p>
+//             <p>USER_NAME:{user_name}</p>
+//             <p>Email: {email}</p>
+//             <p>Name: {first_name} {last_name}</p>
+//             <p>Designation: {designation}</p>
+//         </div>
+//     );
+// };
+
+// export default UserProfile;
 import React from "react";
 import { useLocation } from "react-router-dom";
+import './UserProfile.css';
 
 const UserProfile = () => {
   const location = useLocation();
