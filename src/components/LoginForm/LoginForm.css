@@ -40,7 +40,7 @@
 .input-box .icon{
     position: absolute;
     right: 20px;
-    top: 50%;
+    top: 100%;
     transform: translateY(-50%);
     font-size: 16px;
 }
@@ -57,6 +57,20 @@
     color: #333;
     font-weight: 700;
 }
-
-
-
+.wrapper button:hover{
+    background-color: black;
+}
+@media only screen and (max-width:767px){
+    .input-box .icon{
+        position: absolute;
+        right:20px;
+        top:45%;
+    }
+}
+@media only screen and (max-width:1090px){
+    .input-box .icon{
+        position: absolute;
+        right:20px;
+        top:45%;
+    }
+}

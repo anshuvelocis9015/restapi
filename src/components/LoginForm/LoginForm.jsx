@@ -5,36 +5,45 @@ import axios from "axios";
 
 const LoginForm = () => {
     const [formData, setFormData] = useState({});
+    const [userData, setUserData] = useState(null);
+    const [error, setError] = useState(null);
+
     const handleSubmit = (event) => {
-        console.log('fasdfsdf', event.target)
+        // console.log('fasdfsdf', event.target)
         event.preventDefault();
-        var data = JSON.stringify({
+        const data = JSON.stringify({
             "userEmail": formData.email,
             "userPassword": formData.password
         });
+        console.log(data);
 
-        var config = {
+        const config = {
             method: 'post',
-            url: 'http://192.168.100.59/vs-uat/api/get-header-token',
+            url: 'http://192.168.80.29/my-app/api/get-header-token',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                // 'Authorization': ''
             },
             data: data
         };
 
         axios(config)
             .then(function (response) {
-                console.log(JSON.stringify(response.data));
+                // console.log(JSON.stringify(response.data.result.userInfo));
+                setUserData(response.data.result.userInfo);
+                setError(null);
             })
             .catch(function (error) {
-                console.log(error);
+                // console.log(error);
+                setUserData(null);
+                if(error.response){
+                    setError("server Error:"+ error.response.status);
+                }else if(error.request){
+                    setError("Network Error: The Server is not responding.");
+                }else{
+                    setError("Request Error:"+ error.message);
+                }
             });
-
-        // axios.post('http://192.168.100.59/vs-uat/api/get-header-token',{ userEmail: email, userPassword: password }).then(res => {
-        //     console.log(res);
-        // }).catch(err => {console.error(err);});
-
-        // onSubmit(email.value, password.value);
     };
 
     return (
@@ -51,6 +60,21 @@ const LoginForm = () => {
                 </div>
                 <button type="submit">Login</button>
             </form>
+            <div className="container mt-5">
+                {userData && (
+                    <div>
+                        <p>ID: {userData.id}</p>
+                        <p>Email: {userData.email_id}</p>
+                        <p>Name: {userData.first_name} {userData.last_name}</p>
+                        <p>Designation: {userData.designation}</p>
+                        <p>ID: {userData.id}</p>
+                        <p>Email: {userData.email_id}</p>
+                        <p>Name: {userData.first_name} {userData.last_name}</p>
+                        <p>Designation: {userData.designation}</p>
+                    </div>
+                )}
+                {error && <div>{error}</div>}
+            </div>
         </div>
     );
 };
