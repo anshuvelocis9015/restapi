@@ -1,23 +1,19 @@
-import React from 'react';
-import LoginForm from './components/LoginForm/LoginForm';
-// import Home from './components/Home/Home';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginForm from "./components/LoginForm/LoginForm";
+import UserProfile from "./components/Home/UserProfile";
 
 const App = () => {
-  // const [userEmail, setUserEmail] = useState('');
-  // const [userPassword, setUserPassword] = useState('');
-
-  // const handleLoginFormSubmit = (email, password) => {
-  //   setUserEmail(email);
-  //   setUserPassword(password);
-  // };
-
-  return (
-    <div>
-      {/* <LoginForm onSubmit={handleLoginFormSubmit} /> */}
-      <LoginForm />
-      {/* <Home userEmail={userEmail} userPassword={userPassword} /> */}
-    </div>
-  );
+    return (
+        <Router>
+            <div>
+                <Routes>
+                    <Route exact path="/" element={<LoginForm />} />
+                    <Route exact path="/user-profile" element={<UserProfile />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 };
 
 export default App;
