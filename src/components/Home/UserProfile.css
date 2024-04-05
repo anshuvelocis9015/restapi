@@ -1,4 +1,4 @@
-.card {
+/* .card {
     width: 420px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
@@ -11,4 +11,36 @@
     margin: max(1rem, 3vw);
     border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
     animation: borderRotate var(--d) linear infinite forwards;
-}
+} */
+
+
+.card {
+    width: 100%; /* Full width on small screens */
+    max-width: 420px; /* Maximum width on larger screens */
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #ffff;
+    border-radius: 10px;
+    padding: 2rem;
+    font-size: 3vw;
+    margin: 1rem auto; /* Center the card horizontally */
+    border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+    animation: borderRotate var(--d) linear infinite forwards;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card {
+      font-size: 2.5vw; /* Adjust font size for smaller screens */
+      padding: 1.5rem; /* Adjust padding for smaller screens */
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .card {
+      font-size: 2vw; /* Further reduce font size for extra small screens */
+      padding: 1rem; /* Further reduce padding for extra small screens */
+    }
+  }
+  

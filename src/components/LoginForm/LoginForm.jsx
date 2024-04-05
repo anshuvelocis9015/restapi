@@ -123,6 +123,19 @@ const LoginForm = () => {
             .then(function (response) {
                 const token = response?.data?.result?.headerToken;
                 console.log("token is", token, "token end");
+                if(token === undefined){
+                    toast.error('🦄 Login UnSuccessfully!', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        // transition: Bounce,
+                        });
+                }
                 if (token) {
                     localStorage.setItem('token', token);
                     axios.get('http://192.168.80.29/my-app/api/my-profile', {
@@ -133,7 +146,7 @@ const LoginForm = () => {
                         data: data
                     })
                         .then(function (userDataResponse) {
-                            console.log("userDataResponse is",JSON.stringify(userDataResponse?.data));
+                            // console.log("userDataResponse is",JSON.stringify(userDataResponse?.data));
                             const userData = userDataResponse?.data?.result;
                             console.log("userData", userData);
                             toast.success('🦄 Login Successfully!', {
@@ -146,12 +159,12 @@ const LoginForm = () => {
                                 progress: undefined,
                                 theme: "light"
                             });
-                            let isAuth = JSON.parse(localStorage.getItem('token'));
+                            // let isAuth = JSON.parse(localStorage.getItem('token'));
+                            let isAuth = localStorage.getItem('token');
                             console.log(isAuth,"isAuthentication sddsfdsfdg");
                             if (isAuth && isAuth !== null) {
                                 navigate("/user-profile", { state: { userData } });
                             }
-                            // navigate("/user-profile", {state:{userData}});
                         })
                         .catch(function (error) {
                             // Handle error
