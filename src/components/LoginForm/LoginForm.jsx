@@ -130,7 +130,7 @@ const LoginForm = () => {
 
         const config = {
             method: 'post',
-            url: 'http://192.168.80.29/my-app/api/get-header-token',
+            url: 'http://192.168.80.56/my-app/api/get-header-token',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -140,8 +140,9 @@ const LoginForm = () => {
         axios(config)
             .then(function (response) {
                 const token = response?.data?.result?.headerToken;
-                console.log("token is", token, "token end");
-                if(token === undefined){
+                const userData = response?.data?.result?.userInfo;
+                console.log("token is", token, "token end",userData );
+                if (token === undefined) {
                     toast.error('🦄 Login UnSuccessfully!', {
                         position: "top-right",
                         autoClose: 5000,
@@ -155,7 +156,7 @@ const LoginForm = () => {
                 }
                 if (token) {
                     localStorage.setItem('token', token);
-                    navigate("/user-profile");
+                    navigate("/user-profile" , { state: { state :token } });
                 } else {
                     setError("Token not received");
                 }
