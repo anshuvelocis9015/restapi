@@ -72,7 +72,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './UserProfile.css';
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../axiosInterceptor";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -85,7 +86,7 @@ const UserProfile = () => {
         'api-auth-token': `${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       }}).then((response) => {
-          if (response?.data?.success == 200) {
+          if (response?.data?.success === 200) {
             setUserData(response?.data?.result)
             toast.success("User details")
             console.log("User Profile", response)
