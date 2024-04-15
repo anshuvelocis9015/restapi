@@ -122,7 +122,10 @@ const LoginForm = () => {
     const [formData, setFormData] = useState({});
     const [error, setError] = useState(null);
 
+
+
     const handleSubmit = (event) => {
+        debugger
         event.preventDefault();
         const data = JSON.stringify({
             "userEmail": formData.email,
@@ -142,7 +145,7 @@ const LoginForm = () => {
             .then(function (response) {
                 const token = response?.data?.result?.headerToken;
                 const userData = response?.data?.result?.userInfo;
-                console.log("token is", token, "token end",userData );
+                console.log("token is", token, "token end", userData);
                 if (token === undefined) {
                     toast.error('🦄 Login UnSuccessfully!', {
                         position: "top-right",
@@ -157,7 +160,7 @@ const LoginForm = () => {
                 }
                 if (token) {
                     localStorage.setItem('token', token);
-                    navigate("/user-profile" , { state: { state :token } });
+                    navigate("/mainpage", { state: { state: token } });
                 } else {
                     setError("Token not received");
                 }
